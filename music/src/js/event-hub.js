@@ -1,6 +1,6 @@
 window.evnetHub = {
     evnets: {
-
+        
     },
     emit(eventName, data) {            //发布
         for (let key in this.evnets) {
@@ -13,11 +13,9 @@ window.evnetHub = {
         }
     },
     on(eventName, fn) {               //订阅
-        if (key === eventName) {
-            if (this.evnets[eventName] === undefined) {
-                this.evnets[eventName] = []
-            }
-            this.evnets[eventName].push(fn)
+        if (this.evnets[eventName] === undefined) {
+            this.evnets[eventName] = []
         }
+        this.evnets[eventName].push(fn)
     }
 }
