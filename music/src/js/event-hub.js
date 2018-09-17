@@ -1,4 +1,4 @@
-window.evnetHub = {
+window.eventHub = {
     evnets: {
         
     },

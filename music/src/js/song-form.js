@@ -31,7 +31,7 @@
             this.view = view
             this.model = model
             this.view.render(this.model.data)
-            window.evnetHub.on('upload',(data)=>{
+            window.eventHub.on('upload',(data)=>{
                 console.log("songForm:"+data)
             })
         }
