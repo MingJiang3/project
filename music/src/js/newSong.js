@@ -12,6 +12,9 @@
             this.view = view
             this.model = model
             this.view.render(this.model.data)
+            window.eventHub.on('upload',(data)=>{
+                console.log("newSong:" + data)
+            })
         }
     }
     controller.init(view,model)
