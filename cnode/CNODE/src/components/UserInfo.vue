@@ -46,7 +46,6 @@ export default {
         getData(){
             this.$http.get(`https://cnodejs.org/api/v1/user/${this.$route.params.name}`)
                 .then(res=>{
-                    console.log(res)
                     this.isLoading = false;
                     this.userinfo = res.data.data;
                 })
@@ -56,7 +55,6 @@ export default {
         }
     },
     beforeMount(){
-        console.log(11111111111111)
         this.isLoading = true; 
         this.getData(); 
     }

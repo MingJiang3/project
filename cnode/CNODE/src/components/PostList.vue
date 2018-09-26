@@ -27,7 +27,7 @@
                 {{post | tabFormatter}}
           </span>
                 <!-- 获取标题 -->
-                <router-link :to="{name:'post_content',params:{id:post.id}}">
+                <router-link :to="{name:'post_content',params:{id:post.id,name:post.author.loginname}}">
                   <span>{{post.title}}</span>
                 </router-link>          
                 <!-- 最终回复时间 -->
@@ -49,8 +49,7 @@ export default {
   },
   methods: {
     getData() {
-      this.$http
-        .get("https://cnodejs.org/api/v1/topics", {
+      this.$http.get("https://cnodejs.org/api/v1/topics", {
           page: 1,
           limit: 20
         })
