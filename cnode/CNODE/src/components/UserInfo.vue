@@ -53,12 +53,12 @@ export default {
                 .catch(err=>{
                     console.log(err)
                 })
-        },
-        beforeMount(){
-            console.log(11111111111111)
-            this.isLoading = true; 
-            this.getData(); 
         }
+    },
+    beforeMount(){
+        console.log(11111111111111)
+        this.isLoading = true; 
+        this.getData(); 
     }
 }
 </script>
