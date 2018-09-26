@@ -9,12 +9,7 @@ Vue.prototype.$http = Axios;
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
-new Vue({
-  el: '#app',
-  router,
-  components: { App },
-  template: '<App/>'
-})
+
 // 时间过滤器
 Vue.filter('formatDate',function(str){
   if (!str) return ''
@@ -36,6 +31,7 @@ Vue.filter('formatDate',function(str){
     return  parseInt((time / 2592000000)) + '月前'
   }
 })
+
 //板块过滤器
 Vue.filter('tabFormatter',function (post) {
   if (post.good == true){
@@ -49,4 +45,12 @@ Vue.filter('tabFormatter',function (post) {
   }else{
     return '招聘'
   }
+})
+
+
+new Vue({
+  el: '#app',
+  router,
+  components: { App },
+  template: '<App/>'
 })
