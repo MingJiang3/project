@@ -1,6 +1,8 @@
 <template>
     <div class="header clearfix">
+      <router-link :to="{name:'root'}">
       <img src="../assets/logo.png" alt="">
+      </router-link>
       <ul>
         <li><a href="">首页</a></li>
         <li><a href="">入门</a></li>

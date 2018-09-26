@@ -33,26 +33,37 @@
                 <!-- 最终回复时间 -->
           <span class="last_reply">{{post.last_reply_at | formatDate}}</span>
         </li>
+        <li>
+          <!-- 分页 -->
+          <pagination @handleList="renserList()"></pagination><!-- 为PostList子组件 -->
+        </li>
       </ul>
     </div>
   </div>
 </template>
 
 <script>
+import pagination from './Pagination.vue'
 export default {
   name: "PostList",
   data() {
     return {
       isLoading: false,
-      posts: [] //页面的列表数组
+      posts: [], //页面的列表数组
+      postpage:1
     };
+  },
+  components:{
+    pagination
   },
   methods: {
     getData() {
       this.$http.get("https://cnodejs.org/api/v1/topics", {
-          page: 1,
+        params:{            //get请求要用params
+          page: this.postpage,
           limit: 20
-        })
+        }
+      })
         .then(res => {
           this.isLoading = false; //加载成功去除动画
           this.posts = res.data.data;
@@ -61,6 +72,11 @@ export default {
         .catch(function(err) {
           console.log(err);
         });
+    },
+    renserList(value){
+      this.postpage = value;
+      this.getData();
+      alert(value)
     }
   },
   beforeMount() {
