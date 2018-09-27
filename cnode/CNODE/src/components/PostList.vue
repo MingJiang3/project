@@ -17,10 +17,12 @@
         </li>
         <li v-for="post in posts">
                 <!-- 动态绑定获取头像 -->
-          <img :src="post.author.avatar_url" class="headPortrait">
+          <router-link :to="{name:'user_info',params:{name:post.author.loginname}}">
+            <img :src="post.author.avatar_url" class="headPortrait">
+          </router-link>
                 <!-- 回复/浏览数 -->
-          <span class="visit_count">
-            <span class="reply_count">{{post.reply_count}}</span>/{{post.visit_count}}
+          <span class="all_count">
+            <span class="reply_count">{{post.reply_count}}</span><span class="visit_count">/{{post.visit_count}}</span> 
           </span>
                 <!-- 帖子分类 -->
           <span :class="[{put_good:(post.good == true), put_top:(post.top == true), 'topiclist-tab':(post.top != true && post.good != true)}]">
@@ -90,6 +92,7 @@ export default {
 .headPortrait {
   width: 30px;
   height: 30px;
+  border-radius: 3px;
 }
 .PostList {
   background-color: #e1e1e1;
@@ -133,10 +136,14 @@ li span {
   text-align: center;
   font-size: 12px;
 }
+.all_count{
+  display: inline-block;
+  width: 64px;
+  text-align: center;
+}
 .visit_count {
   color: #b4b4b4;
-  font-size: 14px;
-  margin: 0px 5px;
+  font-size: 10px;
 }
 .reply_count {
   color: #9e78c0;
@@ -152,7 +159,8 @@ li span {
   -o-border-radius: 3px;
   color: #fff;
   font-size: 12px;
-  margin-right: 10px;
+  margin-right: 15px;
+  text-align: center;
 }
 .topiclist-tab {
   background-color: #e5e5e5;

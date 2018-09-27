@@ -1,7 +1,7 @@
 <template>
     <div class="header clearfix">
       <router-link :to="{name:'root'}">
-      <img src="../assets/logo.png" alt="">
+      <img src="../assets/cnodejs_light.svg" alt="">
       </router-link>
       <ul>
         <li><a href="">首页</a></li>
