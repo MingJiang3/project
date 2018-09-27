@@ -35,7 +35,7 @@
         </li>
         <li>
           <!-- 分页 -->
-          <pagination @handleList="renserList()"></pagination><!-- 为PostList子组件 -->
+          <pagination @handleList="renserList"></pagination><!-- 为PostList子组件 -->
         </li>
       </ul>
     </div>
