@@ -30,7 +30,7 @@
           </span>
                 <!-- 获取标题 -->
                 <router-link :to="{name:'post_content',params:{id:post.id,name:post.author.loginname}}">
-                  <span>{{post.title}}</span>
+                  <span class="textTitle">{{post.title}}</span>
                 </router-link>          
                 <!-- 最终回复时间 -->
           <span class="last_reply">{{post.last_reply_at | formatDate}}</span>
@@ -78,7 +78,6 @@ export default {
     renserList(value){
       this.postpage = value;
       this.getData();
-      alert(value)
     }
   },
   beforeMount() {
@@ -93,12 +92,15 @@ export default {
   width: 30px;
   height: 30px;
   border-radius: 3px;
+  margin: -9px 0px;
 }
 .PostList {
   background-color: #e1e1e1;
 }
 .posts {
   margin-top: 10px;
+  display: flex;
+  align-items: center;
 }
 .PostList img {
   height: 30px;
@@ -172,6 +174,14 @@ li span {
   -o-border-radius: 3px;
   font-size: 12px;
   margin-right: 10px;
+}
+.textTitle{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  max-width: 700px;
+  white-space: nowrap;
+  margin: -9px 0px;
 }
 .last_reply {
   text-align: right;

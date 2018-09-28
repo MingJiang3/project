@@ -27,7 +27,7 @@
                         <span>{{reply.author.loginname}}</span>
                         </router-link>
                         <span>{{index+1}}楼</span>
-                        <span v-if="reply.ups.length > 0">{{reply.ups.length}}</span><span v-else></span>
+                        <span v-if="reply.ups.length > 0" class="replyGood">{{reply.ups.length}}👍</span><span v-else></span>
                     </div>
                     <p v-html="reply.content"></p>
                 </div>
@@ -100,7 +100,9 @@
     position: relative;
     bottom: -9px;
   }
-
+  .replyGood{
+    margin-left: 30px;
+  }
   #reply a, #reply span {
     font-size: 13px;
     color: #666;
@@ -123,6 +125,7 @@
 
   .topic_header {
     padding: 10px;
+    border-radius: 5px;
   }
 
   .topic_title {

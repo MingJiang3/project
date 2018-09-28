@@ -21,6 +21,9 @@ export default {
 </script>
 
 <style>
+  #app{
+    background: #e1e1e1;
+  }
   .main{
     width: 80%;
     margin: 0px auto;

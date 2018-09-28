@@ -5,6 +5,9 @@
             <router-link :to="{name:'user_info',params:{name:userinfo.loginname}}">
                 <img :src="userinfo.avatar_url">
             </router-link>
+            <router-link :to="{name:'user_info',params:{name:userinfo.loginname}}" class="userNameA">
+                <span class="userName">{{userinfo.loginname}}</span>
+            </router-link>
         </div>
         <div class="recent_topics">
             <div class="topbar">作者最近主题</div>
@@ -41,6 +44,7 @@ export default {
       this.$http
         .get(`https://cnodejs.org/api/v1/user/${this.$route.params.name}`)
         .then(res => {
+            console.log(res)
           this.userinfo = res.data.data;
         })
         .catch(err => {
@@ -111,7 +115,14 @@ img {
     border-radius: 3px;
     margin: 10px;
 }
-
+.userNameA{
+    text-decoration: none;
+    color: #778087;
+}
+.userName{
+    margin-top: 20px;
+    position: absolute;
+}
 .loginname {
     width: 100px;
     float: right;
@@ -124,7 +135,12 @@ img {
     text-decoration: none;
     color: #778087;
 }
+.authorsummay{
+    background: #fff;
+    border-radius: 5px;
+    position: relative;
 
+}
 .authorsummay .topbar {
     margin-top: 0px;
 }
