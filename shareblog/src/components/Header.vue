@@ -5,8 +5,8 @@
       <p class="blog">Blog</p>
       <p class="bgText1">sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium</p>
       <p class="bgText2">doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo.</p>
-      <el-button round>注册</el-button>
-      <el-button round>登录</el-button>
+      <el-button round class="register">注册</el-button>
+      <el-button round class="login">登录</el-button>
     </template>
 
     <template v-else>
@@ -21,7 +21,7 @@
 export default {
   data(){
     return{
-      isLogin:true
+      isLogin:false
     }
   }
 }
@@ -35,10 +35,24 @@ export default {
   box-sizing: border-box;
 }
 header.no-login {
+  .login{
+    margin-top: -190px;
+    margin-left: 533px;
+    position: absolute;
+  }
+  .register{
+    margin-top: -190px;
+    margin-left: 722px;
+    position: absolute;
+  }
+  .el-button:hover{
+    background-color: #8e554a;
+    color: #ffffff;
+  }
   .blog {
     color: #ffffff;
     font-size: 26px;
-     margin-top: -352px;
+    margin-top: -352px;
     margin-left: 644px;
     position: absolute;
   }

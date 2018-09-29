@@ -1,6 +1,6 @@
 <template>
     <footer>
-        <p>© github:MingJiang3 2018 vue practice</p>
+        <a href="https://github.com/MingJiang3" target="_blank">© github:MingJiang3 2018 vue practice</a>
     </footer>
 </template>
 <style scoped>
@@ -11,6 +11,8 @@ footer{
     text-align: center;
     align-self: end;
     padding: 10px;
-  
+}
+a{
+    color: black;
 }
 </style>
