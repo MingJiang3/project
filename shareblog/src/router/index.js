@@ -7,7 +7,7 @@ import Create from '../pages/Create/template'
 import Detail from '../pages/Detail/template'
 import Login from '../pages/Login/template'
 import User from '../pages/User/template'
-import Register from '../pages/Regidter/template'
+import Register from '../pages/Register/template'
 
 Vue.use(Router)
 
