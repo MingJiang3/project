@@ -30,6 +30,7 @@
                         <span v-if="reply.ups.length > 0" class="replyGood">{{reply.ups.length}}👍</span><span v-else></span>
                     </div>
                     <p v-html="reply.content"></p>
+                    <hr>
                 </div>
             </div>
         </div>
