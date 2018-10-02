@@ -69,7 +69,6 @@ export default {
         .then(res => {
           this.isLoading = false; //加载成功去除动画
           this.posts = res.data.data;
-          console.log(res);
         })
         .catch(function(err) {
           console.log(err);

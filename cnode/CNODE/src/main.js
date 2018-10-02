@@ -47,6 +47,10 @@ Vue.filter('tabFormatter',function (post) {
   }
 })
 
+Vue.filter('userTime',function(str){
+  var date = new Date(str)
+  return date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate()
+})
 
 new Vue({
   el: '#app',

@@ -8,7 +8,7 @@
                 <img :src="userinfo.avatar_url">
                 <span>{{userinfo.loginname}}</span>
                 <p>{{userinfo.score}}积分</p>
-                <p>注册时间：{{userinfo.create_at | formatDate}}</p>
+                <p>注册时间：{{userinfo.create_at | userTime}}</p>
             </section>
             <div class="replies">
                 <p>回复的主题</p>
@@ -48,6 +48,7 @@ export default {
                 .then(res=>{
                     this.isLoading = false;
                     this.userinfo = res.data.data;
+                    console.log(this.userinfo)
                 })
                 .catch(err=>{
                     console.log(err)
