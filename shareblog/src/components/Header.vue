@@ -21,7 +21,7 @@
 export default {
   data(){
     return{
-      isLogin:true
+      isLogin:false
     }
   }
 }
@@ -57,7 +57,7 @@ header.no-login {
     position: absolute;
   }
   .bg {
-    background: url("https://i.loli.net/2018/09/29/5baf722bbafa4.jpg") no-repeat;
+    background: url("https://i.loli.net/2018/10/03/5bb498945686e.jpg") no-repeat;
     background-position: center center;
     background-size: 100% 100%;
     width: 1340px;
