@@ -10,8 +10,8 @@
     </template>
 
     <template v-else>
-      <h1>Let's share</h1>
-      <i class="edit el-icon-edit"></i>
+      <h1><router-link to="/">Let's share</router-link></h1>
+      <router-link to="/create"><i class="edit el-icon-plus"></i></router-link>
       <img class="avatar" src="http://cn.gravatar.com/avatar/1?s=128&d=identicon" alt="">   
     </template>
   </header>
@@ -21,7 +21,7 @@
 export default {
   data(){
     return{
-      isLogin:false
+      isLogin:true
     }
   }
 }
@@ -84,11 +84,15 @@ header.login {
   background: #585f6f;
   h1 {
     margin: 0;
+    padding: 20px;
     padding-left: 64px;
-    color: #fff;
     font-size: 40px;
     text-transform: uppercase;
     flex: 1;
+    a{
+      color: #fff;
+      text-decoration: none;
+    }
   }
   .edit {
     color: #fff;
@@ -99,7 +103,10 @@ header.login {
     height: 40px;
     border: 1px solid #fff;
     border-radius: 50%;
-    margin-left: 15px;
+    margin-right: 128px;
+  }
+  i{
+    margin-right: 28px;
   }
 }
 </style>

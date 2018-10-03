@@ -2,15 +2,16 @@
   <div id="edit">
     <h1>创建文章</h1>
     <h3>文章标题</h3>
-    <el-input></el-input>
-    <p class="msg">限30个字</p>
+    <el-input v-model="title"></el-input>
+    <p class="msg">限15个字</p>
     <h3>内容简介</h3>
-    <el-input type="textarea" rows=3></el-input>
+    <el-input type="textarea" v-model="description" :autosize="{minRows:2,maxRows:4}"></el-input>
     <p class="msg">限30个字</p>
     <h3>文章内容</h3>
-    <el-input type="textarea" rows=20></el-input>
-    <p class="msg">限30个字</p>
-    <el-button >确定</el-button>
+    <el-input type="textarea" v-model="content" :autosize="{minRows:4,maxRows:20}"></el-input>
+    <p class="msg">限8000个字</p>
+    <p><el-switch v-model="value3" active-text="公开" inactive-text="隐蔽"></el-switch></p>
+    <el-button @click="onCreate">确定</el-button>
   </div>
 </template>
 
