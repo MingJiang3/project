@@ -2,8 +2,7 @@
   <div id="app">
     <Header id="header"></Header>
     <main id="main">
-    <!-- <router-view/> -->
-    我的页面
+      <router-view/>   
     </main>
     <Footer id="footer"></Footer>
   </div>

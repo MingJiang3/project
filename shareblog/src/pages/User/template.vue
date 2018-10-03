@@ -30,5 +30,4 @@
 </template>
 
 <script src="./template.js"></script>
-
 <style src="../My/template.less" lang="less"></style>
