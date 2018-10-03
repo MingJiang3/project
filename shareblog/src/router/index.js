@@ -11,7 +11,50 @@ import Register from '../pages/Register/template'
 
 Vue.use(Router)
 
-const router = new Router({
+// const router = new Router({
+//   routes: [
+//     {
+//       path: '/',
+//       component: Index
+//     },
+//     {
+//       path: '/login',
+//       component: Login
+//     },
+//     {
+//       path: '/my',
+//       component: My,
+//       meta:{ requiresAuth:true }
+//     },
+//     {
+//       path: '/user/:userId',
+//       component: User
+//     },
+//     {
+//       path: '/edit/:blogId',
+//       component: Edit,
+//       meta:{ requiresAuth:true }
+//     },
+//     {
+//       path: '/create',
+//       component: Create,
+//       meta:{ requiresAuth:true }
+//     },
+//     {
+//       path: '/register',
+//       component: Register
+//     },
+//     {
+//       path: '/detail/:blogId',
+//       component: Detail
+//     }
+//   ]
+// })
+// router.beforeEach((to,from,next) => {
+  
+// })
+// export default router
+export default new Router({
   routes: [
     {
       path: '/',
@@ -22,38 +65,28 @@ const router = new Router({
       component: Login
     },
     {
-      path: '/my',
-      component: My,
-      meta:{ requiresAuth:true }
+      path: '/detail',
+      component: Detail
     },
     {
-      path: '/user/:userId',
-      component: User
-    },
-    {
-      path: '/edit/:blogId',
-      component: Edit,
-      meta:{ requiresAuth:true }
+      path: '/edit',
+      component: Edit
     },
     {
       path: '/create',
-      component: Create,
-      meta:{ requiresAuth:true }
+      component: Create
+    },
+    {
+      path: '/user',
+      component: User
+    },
+    {
+      path: '/my',
+      component: My
     },
     {
       path: '/register',
       component: Register
-    },
-    {
-      path: '/detail/:blogId',
-      component: Detail
     }
   ]
 })
-
-router.beforeEach((to,from,next) => {
-  
-})
-
-
-export default router
