@@ -2,7 +2,7 @@
   <header :class="{login: isLogin, 'no-login': !isLogin}">
     <template v-if="!isLogin">
       <div class="bg"></div>
-      <p class="blog">Blog</p>
+      <router-link to="/"><p class="blog">Blog</p></router-link> 
       <p class="bgText1">sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium</p>
       <p class="bgText2">doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo.</p>
       <router-link to="/register"><el-button round class="register">注册</el-button></router-link>
@@ -10,12 +10,12 @@
 
     </template>
 
-    <template v-else>
+    <template v-if="isLogin">
       <h1><router-link to="/">Let's share</router-link></h1>
       <router-link to="/create"><i class="edit el-icon-plus"></i></router-link>
       <img class="avatar" src="http://cn.gravatar.com/avatar/1?s=128&d=identicon" alt="">
-      <li><router-link to="my">我的</router-link></li>
-      <li><a href="#" @click="onLogout">注销</a></li>
+      <li class="headerMy"><router-link to="/my">我的</router-link></li>
+      <li class="logOut"><a href="#" @click="onLogout">退出</a></li>
     </template>
   </header>
 </template>
@@ -125,10 +125,23 @@
       height: 40px;
       border: 1px solid #fff;
       border-radius: 50%;
-      margin-right: 128px;
+      margin-right: 50px;
     }
     i{
       margin-right: 28px;
+    }
+    li{
+      list-style: none;
+      a{
+        color: white;
+        text-decoration: none;
+      }
+    }
+    .headerMy{
+      margin-right: 26px;
+    }
+    .logOut{
+      margin-right: 56px;
     }
   }
 </style>
