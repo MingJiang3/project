@@ -12,7 +12,7 @@ export default {
   computed:{
     ...mapGetters(['user'])
   },
-  create(){
+  created(){
     this.page = parseInt(this.$route.query.page) || 1
     blog.getBlogsByUserId(this.user.id, {page:this.page})
     .then(res => {

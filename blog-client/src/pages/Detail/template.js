@@ -12,7 +12,9 @@ export default{
   },
   created(){
     this.blogId = this.$route.params.blogId
+    console.log('1111111111')
     blog.getDetail({blogId: this.blogId}).then( res => {
+      console.log('222222222')
       console.log(res)
       this.title = res.data.title
       this.rwaContent = res.data.content
@@ -22,6 +24,8 @@ export default{
   },
   computed:{
     markdown(){
+      console.log('33333333')
+
       return marked(this.rwaContent)
     }
   }
