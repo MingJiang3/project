@@ -1,32 +1,30 @@
 import marked from 'marked'
 import blog from '@/api/blog'
 
-export default{
-  data(){
-    return{
-      title:'',
-      rwaContent:'',
-      user:{},
-      createdAt:''
+export default {
+  data () {
+    return {
+      title: '',
+      rawContent: '',
+      user: {},
+      createdAt: ''
     }
   },
-  created(){
+
+  created() {
     this.blogId = this.$route.params.blogId
-    console.log('1111111111')
-    blog.getDetail({blogId: this.blogId}).then( res => {
-      console.log('222222222')
+    blog.getDetail({ blogId: this.blogId}).then(res => {
       console.log(res)
       this.title = res.data.title
-      this.rwaContent = res.data.content
-      this.user = res.data.user
+      this.rawContent = res.data.content
       this.createdAt = res.data.createdAt
+      this.user = res.data.user
     })
   },
-  computed:{
-    markdown(){
-      console.log('33333333')
 
-      return marked(this.rwaContent)
+  computed: {
+    markdown() {
+      return marked(this.rawContent)
     }
   }
 }

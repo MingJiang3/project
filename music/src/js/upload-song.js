@@ -42,15 +42,10 @@
                     },
                     'FileUploaded': function (up, file, info) {
                         // 每个文件上传成功后，处理相关的事情
-                        // 其中info.response是文件上传成功后，服务端返回的json，形式如：
-                        // {
-                        //    "hash": "Fh8xVqod2MQ1mocfI4S4KpRL6D98",
-                        //    "key": "gogopher.jpg"
-                        //  }
-                        // 查看简单反馈
                         var domain = up.getOption('domain');
                         var response = JSON.parse(info.response);
                         var sourceLink = 'http://' + domain + '/' + encodeURIComponent(response.key); //获取上传成功后的文件的Url
+                        
                         window.eventHub.emit('upload',{
                            link:sourceLink,
                            key:response.key 
@@ -61,7 +56,7 @@
                         //上传出错时，处理相关的事情
                     },
                     'UploadComplete': function () {
-                        //队列文件处理完毕后，处理相关的事情
+                        
                     },
 
                 }

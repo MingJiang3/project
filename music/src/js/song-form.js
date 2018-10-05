@@ -1,8 +1,7 @@
 {
     let view = {
-        el: '.page > main',
+        el: '.page > main >.maincontent',
         template: `
-        <h1>新 建 歌 曲</h1>
             <form class="form">
                 <div class="row">
                     <label>歌名</label>

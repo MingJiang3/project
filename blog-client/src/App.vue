@@ -28,7 +28,7 @@
     grid-template-columns: auto auto auto;
     grid-template-rows: auto 1fr auto;
     grid-template-areas: "header header header"
-                         ".      main  ."
+                         "main main main"
                          "footer footer footer";
     #header {
       grid-area: header;

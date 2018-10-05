@@ -11,7 +11,7 @@
     text-align: center;
     align-self: end;
     padding: 18px 0;
-    margin-top: 50px;
+    margin-top: 40px;
   }
   a{
     color: black;

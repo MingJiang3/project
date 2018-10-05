@@ -1,28 +1,33 @@
-import blogs from '@/api/blog.js'
+import blog from '@/api/blog.js'
 
-export default{
-  data(){
-    return{
-      blogs:[],
-      total:0,
-      page:1
+export default {
+  data () {
+    return {
+      blogs: [],
+      total: 0,
+      page: 1
     }
   },
-  created(){
+
+  created() {
     this.page = parseInt(this.$route.query.page) || 1
-    blogs.getIndexBlogs({page:this.page}).then(res => {
+    blog.getIndexBlogs({ page: this.page }).then(res => {
+      console.log(res)
       this.blogs = res.data
       this.total = res.total
       this.page = res.page
     })
   },
-  methods:{
-    onPageChange(newPage){
-      blogs.getIndexBlogs({ page:newPage }).then(res => {
+
+  methods: {
+    onPageChange(newPage) {
+      console.log(newPage)
+      blog.getIndexBlogs({ page: newPage }).then(res => {
+        console.log(res)
         this.blogs = res.data
         this.total = res.total
         this.page = res.page
-        this.$router.push({ path:'/',query:{ page:newPage }})
+        this.$router.push({ path: '/', query: { page: newPage}})
       })
     }
   }

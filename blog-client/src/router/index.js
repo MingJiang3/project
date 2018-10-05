@@ -22,11 +22,11 @@ export default new Router({
       component: Login
     },
     {
-      path: '/detail',
+      path: '/detail/:blogId',
       component: Detail
     },
     {
-      path: '/edit',
+      path: '/edit/:blogId',
       component: Edit
     },
     {
@@ -34,7 +34,7 @@ export default new Router({
       component: Create
     },
     {
-      path: '/user',
+      path: '/user/:userId',
       component: User
     },
     {

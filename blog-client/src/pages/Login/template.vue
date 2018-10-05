@@ -1,6 +1,6 @@
 <template>
   <div id="login">
-    <div>
+    <div class="usn">
     <h4>用户名</h4>
     <el-input v-model="username" placeholder="用户名"></el-input>
     </div>
