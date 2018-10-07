@@ -22,19 +22,29 @@
             </form>
         `,
         render(data = {}) {
-            let placeholders = ['name', 'url','singer','id']
+            let placeholders = ['name', 'url', 'singer', 'id']
             let html = this.template
             placeholders.map((string) => {
                 html = html.replace(`${string}`, data[string] || '')
             })
             $(this.el).html(html)
         },
-        reset(){
+        reset() {
             this.render({})
         }
     }
     let model = {
         data: { name: '', singer: '', url: '', id: '' },
+        updata(data){
+            var song = AV.Object.createWithoutData('Song', this.data.id)
+            song.set('name', data.name)
+            song.set('singer', data.singer)
+            song.set('url', data.url)
+            return song.save().then((response)=>{
+                Object.assign(thsi.data , data)
+                return response
+            })
+        },
         create(data) {
             var Song = AV.Object.extend('Song');
             var song = new Song();
@@ -42,19 +52,19 @@
             song.set('singer', data.singer);
             song.set('url', data.url);
             return song.save().then((newSong) => {
-                let {id,attributes} = newSong    // let id = newSong.id     // let attributes = newSong.attributes
+                let { id, attributes } = newSong    // let id = newSong.id     // let attributes = newSong.attributes
                 // this.data = {id, ...attributes}
-                Object.assign(this.data,{
-                     id,                                   //this.data.id = id
-                     ...attributes                         //相当于下面三行
-                     //name:attributes.name,               //this.data.name = attributes.name
-                     //singer:attributes.singer,           //this.data.singer = attributes.singer
-                     //url:attributes.url
-                 })
+                Object.assign(this.data, {
+                    id,                                   //this.data.id = id
+                    ...attributes                         //相当于下面三行
+                    //name:attributes.name,               //this.data.name = attributes.name
+                    //singer:attributes.singer,           //this.data.singer = attributes.singer
+                    //url:attributes.url
+                })
             }, (error) => {
                 console.error(error);
             });
-        }
+        } 
     }
     let controller = {
         init(view, model) {
@@ -72,21 +82,39 @@
                 this.view.render(this.model.data)
             })
         },
+        create() {
+            let needs = 'name singer url'.split(' ')
+            let data = {}
+            needs.map((string) => {
+                data[string] = this.view.$el.find(`[name="${string}"]`).val()
+            })
+            this.model.create(data).then(() => {
+                this.view.reset()
+                // let string = JSON.stringify(this.model.data)
+                // let obj = JSON.parse(string)
+                let obj = JSON.parse(JSON.stringify(this.model.data))   //深拷贝,否则会把同一内存传来传去
+                window.eventHub.emit('create', obj)
+            })
+        },
+        updata() {
+            let needs = 'name singer url'.split(' ')
+            let data = {}
+            needs.map((string) => {
+                data[string] = this.view.$el.find(`[name="${string}"]`).val()
+            })
+            this.model.updata(data).then(()=>{
+                window.eventHub.emit('updata', JSON.parse(JSON.stringify(this.model.data)))
+            })
+            
+        },
         bindEvents() {
             this.view.$el.on('submit', 'form', (e) => {   //事件委托
                 e.preventDefault()
-                let needs = 'name singer url'.split(' ')
-                let data = {}
-                needs.map((string) => {
-                    data[string] = this.view.$el.find(`[name="${string}"]`).val()
-                })
-                this.model.create(data).then(()=>{
-                    this.view.reset()
-                    // let string = JSON.stringify(this.model.data)
-                    // let obj = JSON.parse(string)
-                    let obj = JSON.parse(JSON.stringify(this.model.data))   //深拷贝,否则会把同一内存传来传去
-                    window.eventHub.emit('create',obj)
-                })
+                if (this.model.data.id) {
+                    this.updata()
+                } else {
+                    this.create()
+                }
             })
         }
     }
