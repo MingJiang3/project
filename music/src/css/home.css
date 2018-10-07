@@ -158,6 +158,8 @@ body{
     fill: #AAA;
   }
   section.songs > .list .icon-sq{
+    width: 1em;
+    height: 1em;;
     fill: #FE672E;
   }
   section.art{
