@@ -6,12 +6,12 @@
             $(this.el).css('background-image', `url(${song.cover})`)
             $(this.el).find('img.cover').attr('src', song.cover)
             if ($(this.el).find('audio').attr('src') !== song.url) {
-                $(this.el).find('audio').attr('src', song.cover) //不重头开始播放
+                $(this.el).find('audio').attr('src', song.url) //不重头开始播放
             }
             if (status === 'playing') {
-                $(this.el).find('disc-container').addClass('playing')
+                $(this.el).find('.disc-container').addClass('playing')
             } else {
-                $(this.el).find('disc-container').removeClass('playing')
+                $(this.el).find('.disc-container').removeClass('playing')
             }
         },
         play() {
@@ -55,8 +55,8 @@
                 this.view.render(this.model.data)
                 this.view.play()
             })
-            $(this.view.el).on('click', '.icon-paused', () => {
-                this.model.data.status = 'playing'
+            $(this.view.el).on('click', '.icon-pause', () => {
+                this.model.data.status = 'paused'
                 this.view.render(this.model.data)
                 this.view.pause()
             })
