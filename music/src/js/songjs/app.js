@@ -6,13 +6,22 @@
             $(this.el).css('background-image', `url(${song.cover})`)
             $(this.el).find('img.cover').attr('src', song.cover)
             if ($(this.el).find('audio').attr('src') !== song.url) {
-                $(this.el).find('audio').attr('src', song.url) //不重头开始播放
+                let audio =  $(this.el).find('audio').attr('src', song.url).get(0) //不重头开始播放
+                audio.onended = ()=>{window.eventHub.emit('songEnd')}
             }
             if (status === 'playing') {
                 $(this.el).find('.disc-container').addClass('playing')
             } else {
                 $(this.el).find('.disc-container').removeClass('playing')
             }
+            $(this.el).find('.song-description > h1').text(song.name)
+            let {lyrics} = song     
+            let array = lyrics.split('\n').map((string)=>{  //把歌词分成一段段p标签
+                let p = document.createElement('p')
+                p.textContent = string
+                $(this.el).find('.lyric > .lines').append(p)
+            })
+        
         },
         play() {
             $(this.el).find('audio')[0].play()
@@ -59,6 +68,10 @@
                 this.model.data.status = 'paused'
                 this.view.render(this.model.data)
                 this.view.pause()
+            })
+            window.eventHub.on('songEnd',()=>{
+                this.model.data.status = 'paused'
+                this.view.render(this.model.data)
             })
         },
         getSongId() {
