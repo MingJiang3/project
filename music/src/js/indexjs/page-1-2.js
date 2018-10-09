@@ -35,7 +35,8 @@
             var query = new AV.Query('Song');
             return query.find().then((songs) => {
                 this.data.songs = songs.map((song) => {
-                    return { id: song.id, ...song.attributes }
+                    return { id: song.id, ...song.attributes }  //苹果浏览器不支持此语法
+                    // return Object.assign({id:song.id},song.attributes)
                 })
                 return songs
             })
