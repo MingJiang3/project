@@ -104,7 +104,7 @@ header{
     text-align: center;
     width: 386px;
     margin: 0 auto;
-    margin-top: 15%;
+    margin-top: 10%;
 }
 .form{
     border: dashed 1px solid #e0e0e0;
@@ -144,11 +144,8 @@ header{
     border: 1px solid #e30504;
     cursor: pointer;
 }
-.form input[type=button]{
-
-}
-.form input[type=submit]{
-    
+textarea{
+    border-radius: 5px;
 }
 
 

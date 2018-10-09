@@ -8,6 +8,7 @@
             if ($(this.el).find('audio').attr('src') !== song.url) {
                 let audio =  $(this.el).find('audio').attr('src', song.url).get(0) //不重头开始播放
                 audio.onended = ()=>{window.eventHub.emit('songEnd')}
+                audio.ontimeupdate = ()=>{this.showLyrics(audio.currentTime)}
             }
             if (status === 'playing') {
                 $(this.el).find('.disc-container').addClass('playing')
@@ -18,17 +19,55 @@
             let {lyrics} = song     
             let array = lyrics.split('\n').map((string)=>{  //把歌词分成一段段p标签
                 let p = document.createElement('p')
-                p.textContent = string
+                let regex = /\[([\d:.]+)\](.+)/
+                let matches = string.match(regex)
+                if (matches) {
+                    p.textContent = matches[2]
+                    let time = matches[1].split(':')
+                    let minutes = time[0]
+                    let seconds = time[1]
+                    let newTime = parseInt(minutes,10)*60 + parseFloat(seconds,10)
+                    p.setAttribute('data-time',newTime)
+                }else{
+                    p.textContent = string
+                }
                 $(this.el).find('.lyric > .lines').append(p)
             })
         
+        },
+        showLyrics(time){
+            let allP = $(this.el).find('.lyric > .lines > p')
+            let p
+            for (let i = 0; i < allP.length; i++) {
+                if (i === allP.length-1) {
+                    p = allP[i]
+                    break
+                }else{
+                    let currentTime = allP.eq(i).attr('data-time')
+                    let nextTime = allP.eq(i+1).attr('data-time')
+                    if (currentTime <= time && nextTime > time) {
+                        p = allP[i]
+                        break
+                        // let height = allP.eq(i).offset().top - $(this.el).find('.lyric').offset().top
+                        // $(this.el).find('.lyric > .lines').css('transform',`translateY(${-height}px)`)
+                        // console.log(allP[i])
+                    }
+                }
+            }
+            let pHeight = p.getBoundingClientRect().top       //用DOM api, Jq有问题
+            let linesHeight = $(this.el).find('.lyric > .lines')[0].getBoundingClientRect().top
+            let height = pHeight - linesHeight
+            $(this.el).find('.lyric > .lines').css({
+                transform:`translateY(${-(height-20)}px)`
+            })
+            $(p).addClass('active').siblings('.active').removeClass('active')
         },
         play() {
             $(this.el).find('audio')[0].play()
         },
         pause(){
             $(this.el).find('audio')[0].pause()
-         }
+        }
     }
     let model = {
         data: {

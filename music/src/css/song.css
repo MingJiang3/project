@@ -3,11 +3,13 @@
 
 @keyframes circle{0% {transform: rotate(0deg); } 100% {transform: rotate(360deg); } }
 
-.page{display: flex; flex-direction: column; height: 100vh;
+.page{
+	display: flex; 
+	flex-direction: column; 
+	height: 100vh;
 	background: transparent url() no-repeat center;
-	background-size: cover;
+	background-size: cover;	
 }
-
 .disc-container{position: relative}
 .disc-container .icon-wrapper{
 	position: absolute; z-index: 1; display: flex; 
@@ -46,14 +48,15 @@
 	font-size: 18px;
 }
 .song-description p{
-	font-size: 14px;
-	line-height: 24px;
+	font-size: 16px;
+	line-height: 26px;
 }
 .song-description .lines{
-	transition: transform 0.3s;
+	transition: transform 0.4s;
+	margin-top: 2vh;
 }
 .song-description .lyric{
-	height: 72px;
+	height: 120px;
 	overflow: hidden;
 }
 .song-description p.active{
@@ -82,3 +85,23 @@
 	background: #D43B32;
 	color: white;
 }	
+#app{
+	z-index: 1;
+}
+#app::before{
+	content: "";
+    width:100%;
+    height:100%;
+    position: absolute;
+    left:0;
+    top:0;
+    background: inherit;
+    filter: blur(5px);
+    z-index: 0;
+}
+.song-description{
+	z-index: 3;
+}
+.links{
+	z-index: 3;
+}

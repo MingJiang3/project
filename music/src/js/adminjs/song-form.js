@@ -6,23 +6,23 @@
             <form class="form">
                 <div class="row">
                     <label>歌名</label>
-                    <input type="text" value="name" name="name">
+                    <input type="text" value="__name__" name="name">
                 </div>
                 <div class="row">
                     <label>歌手</label>
-                    <input type="text" value="singer" name="singer">
+                    <input type="text" value="__singer__" name="singer">
                 </div>
                 <div class="row">
                     <label>外链</label>
-                    <input type="text" value="url" name="url">
+                    <input type="text" value="__url__" name="url">
                 </div>
                 <div class="row">
                     <label>封面</label>
-                    <input type="text" value="cover" name="cover">
+                    <input type="text" value="__cover__" name="cover">
                 </div>
                 <div class="row">
                     <label>歌词</label>
-                    <textarea name="lyrics">lyrics</textarea>
+                    <textarea name="lyrics" cols=39 rows=5>__lyrics__</textarea>
                 </div>
                 <div class="row actions">
                     <button type="submit">保存</button>
@@ -33,7 +33,7 @@
             let placeholders = ['name', 'url', 'singer', 'id' ,'cover', 'lyrics']
             let html = this.template
             placeholders.map((string) => {
-                html = html.replace(`${string}`, data[string] || '')
+                html = html.replace(`__${string}__`, data[string] || '')
             })
             $(this.el).html(html)
         },
