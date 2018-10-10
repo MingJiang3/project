@@ -17,7 +17,7 @@
       </section>
       <section class="globalTabs" id="tabs">
         <ol class="tabs-nav">
-          <li class=active  data-tab-name="page-1"> <div class="text"> 推荐音乐 </div> </li>
+          <li class=active  data-tab-name="page-1"><div class="text">推荐音乐</div></li>
           <li data-tab-name="page-2"><div class="text">热歌榜</div></li>
           <li data-tab-name="page-3"><div class="text">搜索</div></li>
         </ol>
@@ -30,39 +30,39 @@
           <ol class="songs">
             <li>
               <div class="cover">
-                <img width=105 src="https://i.loli.net/2017/08/22/599ba7a0aea8b.jpg" alt="封面">
+                <img width=105 src="http://p1.music.126.net/5VCQ7eFTnnFX5x9EU3RNsw==/1398578799657811.webp?imageView&thumbnail=369x0&quality=75&tostatic=0&type=webp" alt="封面">
               </div>
-              <p>两行文字两行文字两行文字两行文字两行文字</p>
+              <p>♪100首【国外健身媒体推荐】の跑步音乐™</p>
+            </li>
+            <li>
+              <div class="cover">
+                <img src="http://p1.music.126.net/JIc9X91OSH-7fUZqVfQXAQ==/7731765766799133.webp?imageView&thumbnail=369x0&quality=75&tostatic=0&type=webp" alt="封面">
+              </div>
+              <p>21世纪以来最畅销的100首单曲</p>
+            </li>
+            <li>
+              <div class="cover">
+                <img src="http://p2.music.126.net/ffKurGMmgRRY0BqTjf9XgQ==/109951163517968369.webp?imageView&thumbnail=369x0&quality=75&tostatic=0&type=webp" alt="封面">
+              </div>
+              <p>最是粤语最为深情，也唯独你最难忘怀</p>
+            </li>
+            <li>
+              <div class="cover">
+                <img src="https://i.loli.net/2018/10/10/5bbd72d75d37d.jpg" alt="封面">
+              </div>
+              <p>孤独症候群，被回眸击中的心事</p>
+            </li>
+            <li>
+              <div class="cover">
+                <img src="http://p1.music.126.net/hU35VTEx5h7LY0gvbKcp5Q==/19073228207261479.webp?imageView&thumbnail=369x0&quality=75&tostatic=0&type=webp" alt="封面">
+              </div>
+              <p>闪光少女★电影歌曲★全集</p>
             </li>
             <li>
               <div class="cover">
                 <img src="https://i.loli.net/2017/08/22/599ba7a0aea8b.jpg" alt="封面">
               </div>
-              <p>两行文字两行文字两行文字两行文字</p>
-            </li>
-            <li>
-              <div class="cover">
-                <img src="https://i.loli.net/2017/08/22/599ba7a0aea8b.jpg" alt="封面">
-              </div>
-              <p>两行文字两行文字两行文字两行文字</p>
-            </li>
-            <li>
-              <div class="cover">
-                <img src="https://i.loli.net/2017/08/22/599ba7a0aea8b.jpg" alt="封面">
-              </div>
-              <p>两行文字两行文字两行文字两行文字</p>
-            </li>
-            <li>
-              <div class="cover">
-                <img src="https://i.loli.net/2017/08/22/599ba7a0aea8b.jpg" alt="封面">
-              </div>
-              <p>两行文字两行文字两行文字两行文字</p>
-            </li>
-            <li>
-              <div class="cover">
-                <img src="https://i.loli.net/2017/08/22/599ba7a0aea8b.jpg" alt="封面">
-              </div>
-              <p>两行文字两行文字两行文字两行文字</p>
+              <p>TFboys四周年演唱会全集(live)</p>
             </li>
           </ol>
         </section>
@@ -84,15 +84,38 @@
           </div> -->
         </section>
       </li>
-      <li class="page-2">page 2</li>
+      <!-- 热歌榜 -->
+      <li class="page-2">
+        <div class="hotop">
+          <div class="hotopImage"></div>
+        </div>
+        <div class="hotcont">
+
+        </div>
+        <div class="hotdn">
+          <span></span>
+        </div>
+
+      </li>
+      <!-- 搜索 -->
       <li class="page-3">
-        <input id="search" type="text" style="background:#EBECEC;">
-        <ol id="searchResult"></ol>
+        <div class="search-wrapper">
+          <figure class="closeleft">
+              <svg class="icon" aria-hidden="true">
+                  <use xlink:href="#icon-search"></use>
+                </svg>
+          </figure>
+          <input class="search" id="search" type="text" placeholder="搜索歌曲、歌手、专辑">
+          <figure class="closeright">
+          </figure>
+        </div>
+        <h3>热门搜索</h3>
+        <!-- <ol id="searchResult"></ol> -->
       </li>
     </ol>
   </div>
   
-  <script src="//at.alicdn.com/t/font_395875_4hwrep7mypx8ncdi.js"></script>
+  <script src="//at.alicdn.com/t/font_864237_4a7oa2mlwwm.js"></script>
   <script src="../node_modules/leancloud-storage/dist/av-min.js"></script>
   <script src="./js/initializers/av.js"></script>
   <script src="./js/adminjs/jquery.min.js"></script>  
@@ -102,15 +125,5 @@
   <script src="./js/indexjs/page-1.js"></script>
   <script src="./js/indexjs/page-2.js"></script>
   <script src="./js/indexjs/page-3.js"></script>
-
-  <!-- <script data-main="src/main" src="vendors/require.js"></script>
-  <script>
-    requirejs.config({
-      paths: {
-        jquery: '../vendors/jquery.min',
-        av: '../vendors/av-min'
-      }
-  });
-  </script> -->
 </body>
 </html>
