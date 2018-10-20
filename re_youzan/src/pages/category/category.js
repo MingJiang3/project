@@ -48,7 +48,6 @@ new Vue({
     filters:{
         Prices(price){
 
-
             return price
         }
     }

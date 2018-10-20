@@ -105,15 +105,13 @@
                         <span class="follows"> / 关注度: {{list.follows}}</span>
                       </div>
                       <ul class="shop-images">
-                        <li v-for="list in rankData.hotShops">
+                        <li v-for="image in list.imgs">
                           <a href="https://h5.youzan.com/v2/showcase/homepage?kdt_id=16395015&amp;source=yzapp">
-                            <img src="list.imgs">
+                            <img :src="image">
                           </a>
                         </li>
                       </ul>
                     </li>
-
-
 
                   </ul>
                 </div>
