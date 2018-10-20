@@ -9,7 +9,10 @@ import Foot from 'components/Footer'
 new Vue({
     el: '#app',
     data: {
-        topLists: null
+        topLists: null,
+        topIndex:0,
+        subData:null,
+        rankData:null
     },
     methods: {
         getTopList() {
@@ -19,14 +22,34 @@ new Vue({
 
             })
         },
-        getSubList(id){
-
+        getSubList(index,id){
+            this.topIndex = index
+            if(index == 0){
+                this.getRank()
+            }else{
+                axios.post(url.subList,{id}).then(res => {
+                    this.subData = res.data.data
+                })
+            }
+        },
+        getRank(){
+            axios.post(url.rank).then(res => {
+                this.rankData = res.data.data
+            })
         }
     },
     created() {
         this.getTopList()
+        this.getSubList(0)
     },
     components: {
         Foot
+    },
+    filters:{
+        Prices(price){
+
+
+            return price
+        }
     }
 })
