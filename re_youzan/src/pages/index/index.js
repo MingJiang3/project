@@ -3,7 +3,7 @@ import './index.css'
 import Vue from 'vue'
 import axios from 'axios'
 import url from 'js/api.js'
-import { InfiniteScroll } from 'mint-ui';
+import { InfiniteScroll } from 'mint-ui'
 import Foot from 'components/Footer'
 import Swiper from 'components/Swiper'
 
