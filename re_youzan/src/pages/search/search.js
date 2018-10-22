@@ -6,14 +6,14 @@ import axios from 'axios'
 import url from 'js/api.js'
 import mixin from 'js/mixin'
 import qs from 'qs'
-
-
 let {keyword,id} = qs.parse(location.search.substr(1))   //把问号截掉
+import Velocity from 'velocity-animate'
+
 new Vue({
     el:'.container',
     data:{
         searchList:null,
-        keyword:'',
+        keyword,
         isShow:false
     },
     created(){
@@ -27,8 +27,13 @@ new Vue({
         },
         move(){
             if(document.body.scrollTop > 100){
-                // isShow
+               this.isShow = true
+            }else{
+                this.isShow = false
             }
+        },
+        toTop(){
+            Velocity(document.body,'scroll',{duration:800})
         }
     },
     mixins:[mixin]
