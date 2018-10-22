@@ -242,7 +242,11 @@ img {
 }
 
 .container {
-  background-color: #f4f4f4
+  background-color: #f4f4f4;
+  overflow-y: hidden;
+  position: relative;
+  box-sizing: border-box;
+  min-height: 667px;
 }
 
 .with-bottom-nav {
@@ -329,12 +333,6 @@ img {
   padding-bottom: 8px;
   font-size: 14px;
   color: #ff525e
-}
-
-.container {
-  overflow-y: hidden;
-  position: relative;
-  box-sizing: border-box
 }
 
 .content {
