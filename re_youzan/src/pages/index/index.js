@@ -39,11 +39,12 @@ let app = new Vue({
                 if(curLists.length < this.pageSize){//判断所有数据是否加载完毕
                     this.allLoaded = true
                 }
-                if(this.lists){
-                    this.lists = this.lists.concat(curLists)
-                }else{
-                    this.lists = curLists//第一次请求数据
-                }
+                this.lists ? this.lists = this.lists.concat(curLists):this.lists = curLists//第一次请求数据
+                // if(this.lists){
+                //     this.lists = this.lists.concat(curLists)
+                // }else{
+                //     this.lists = curLists//第一次请求数据
+                // }
                 this.loading = false
                 this.pageName++
             })
