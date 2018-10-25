@@ -6,7 +6,8 @@ let url = {
     subList:'/category/subList',
     searchList:'/search/list',
     details:'/goods/details',
-    deal:'/goods/deal'
+    deal:'/goods/deal',
+    addCart:'/cart/add'
 }
 let host = 'http://rap2api.taobao.org/app/mock/7058'
 for(const key in url){
