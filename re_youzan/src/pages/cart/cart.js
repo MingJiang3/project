@@ -22,8 +22,17 @@ new Vue({
     methods:{
         getLists(){
             axios.post(url.carLists).then(res=>{
-                this.lists = res.data.cartList
+                let lists = res.data.cartList
+                lists.forEach(shop => {
+                    shop.goodsList.forEach(good=>{
+                        good.checked = true
+                    })
+                })
+                this.lists = lists
             })
+        },
+        selectGood(good){
+            good.checked = !good.checked
         }
     },
     mixins:[mixin]
