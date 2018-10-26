@@ -25,7 +25,7 @@
           <div class="js-shop-list shop-list">
             <div class="block block-order block-cart" v-for="(shop,shopIndex) in lists">
               <div class="header">
-                <div class="select-group js-select-group"><span class="check"></span></div> 
+                <div class="select-group js-select-group" @click="selectShop(shop)"><span class="check" :class="{checked:shop.checked}"></span></div> 
                 <a class="shop-title"><i class="custom-store-img">店铺：</i>{{shop.shopTitle}}</a>
                 <a href="javascript:;" data-type="cart" class="j-edit-list pull-right c-blue font-size-12 edit-list">
                   编辑
@@ -36,7 +36,7 @@
                 <ul class="js-list block block-list block-list-cart border-0">
                   <li class="block-item block-item-cart" v-for="(good,goodIndex) in shop.goodsList">
                     <div>
-                      <div class="check-container" @click="selectGood(good)">
+                      <div class="check-container" @click="selectGood(shop,good)">
                         <span class="check" :class="{checked:good.checked}"></span>
                       </div>
                       <div class="name-card clearfix">
@@ -117,7 +117,7 @@
               你需要分开结算每个店铺的商品哦~
             </div>
             <div class="bottom-cart clear-fix">
-              <div class="select-all"><span class="check"></span> 全选
+              <div class="select-all"><span class="check" :class="{checked:allSelected}"></span> 全选
               </div>
               <!-- 显示状态 -->
               <div class="total-price">
