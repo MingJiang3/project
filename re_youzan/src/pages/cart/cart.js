@@ -12,6 +12,8 @@ new Vue({
     data:{
         lists:null,
         total:0,
+        editingShop:null,
+        editingShopIndex:-1,
 
     },
     computed:{
@@ -48,6 +50,9 @@ new Vue({
                 return arr
             }
             return []
+        },
+        removeLists(){
+
         }
     },
     created(){
@@ -60,8 +65,12 @@ new Vue({
                 console.log(res.data.cartList)
                 lists.forEach(shop => {
                     shop.checked = true
+                    shop.removeChecked = false
+                    shop.editing = false
+                    shop.editingMsg = '编辑'
                     shop.goodsList.forEach(good=>{
                         good.checked = true
+                        good.removeChecked = false
                     })
                 })
                 this.lists = lists
@@ -81,6 +90,19 @@ new Vue({
         },
         selectAll(){
             this.allSelected = !this.allSelected
+        },
+        edit(shop,shopIndex){
+            shop.editing = !shop.editing
+            shop.editingMsg = shop.editing ? '完成':'编辑'
+            this.lists.forEach((item,i)=>{
+                if(shopIndex !== i){
+                    item.editing = false
+                    item.editingMsg = shop.editing ? '':'编辑'
+                }
+            })
+            this.editingShop = shop.editing ? shop : null
+            this.editingShopIndex = shop.editing ? shopIndex : -1
+
         }
     },
     mixins:[mixin]
