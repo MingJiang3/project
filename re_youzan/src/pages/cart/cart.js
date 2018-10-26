@@ -11,6 +11,7 @@ new Vue({
     el:'.container',
     data:{
         lists:null,
+        total:0,
 
     },
     computed:{
@@ -30,6 +31,23 @@ new Vue({
                     })
                 })
             }
+        },
+        selectLists(){
+            let arr = []
+            let total = 0
+            if(this.lists && this,this.lists.length){
+                this.lists.forEach(shop=>{
+                    shop.goodsList.forEach(good=>{
+                        if(good.checked){
+                            arr.push(good)
+                            total += good.price * good.number
+                        }
+                    })
+                })
+                this.total = total
+                return arr
+            }
+            return []
         }
     },
     created(){
