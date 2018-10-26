@@ -23,7 +23,12 @@ new Vue({
                 }
             },
             set(newVal){
-
+                this.lists.forEach(shop=>{
+                    shop.checked = newVal
+                    shop.goodsList.forEach(good=>{
+                        good.checked = newVal
+                    })
+                })
             }
         }
     },
@@ -34,6 +39,7 @@ new Vue({
         getLists(){
             axios.post(url.carLists).then(res=>{
                 let lists = res.data.cartList
+                console.log(res.data.cartList)
                 lists.forEach(shop => {
                     shop.checked = true
                     shop.goodsList.forEach(good=>{
@@ -45,12 +51,18 @@ new Vue({
         },
         selectGood(shop,good){
             good.checked = !good.checked
-            shop.checked = shop.goodsList.every(good=>{
+            shop.checked = shop.goodsList.every(good=>{ //一个店铺中的商品全选时，店铺就选中
                 return good.checked
             })
         },
         selectShop(shop){
             shop.checked = !shop.checked
+            shop.goodsList.forEach(good=>{  //店铺选中商品就全选
+                good.checked = shop.checked
+            })
+        },
+        selectAll(){
+            this.allSelected = !this.allSelected
         }
     },
     mixins:[mixin]
