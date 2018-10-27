@@ -88,14 +88,13 @@ new Vue({
         getLists(){
             axios.post(url.carLists).then(res=>{
                 let lists = res.data.cartList
-                console.log(res.data.cartList)
                 lists.forEach(shop => {
-                    shop.checked = true
+                    shop.checked = false
                     shop.removeChecked = false
                     shop.editing = false
                     shop.editingMsg = '编辑'
                     shop.goodsList.forEach(good=>{
-                        good.checked = true
+                        good.checked = false
                         good.removeChecked = false
                     })
                 })
@@ -132,6 +131,22 @@ new Vue({
             this.editingShop = shop.editing ? shop : null
             this.editingShopIndex = shop.editing ? shopIndex : -1
 
+        },
+        reduce(good){
+            axios.post(url.cartReduce,{
+                id:good.id,
+                number:1
+            }).then(res=>{
+                good.number--
+            })
+        },
+        add(good){
+            axios.post(url.addCart,{
+                id:good.id,
+                number:1
+            }).then(res=>{
+                good.number++
+            })
         }
     },
     mixins:[mixin]
