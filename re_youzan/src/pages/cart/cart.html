@@ -37,7 +37,7 @@
               <div>
                 <!-- 商品列表 -->
                 <ul class="js-list block block-list block-list-cart border-0">
-                  <li class="block-item block-item-cart" :class="{editing:shop.editing}" v-for="(good,goodIndex) in shop.goodsList"
+                  <li class="block-item block-item-cart" :class="{editing:shop.editing}" v-for="(good,goodIndex) in shop.goodsList" :key="good.id"
                   @touchstart="star($event,good)" @touchend="end($event,shopIndex,good,goodIndex)"
                   :ref="'goods-'+shopIndex+'-'+goodIndex">
                     <div>
