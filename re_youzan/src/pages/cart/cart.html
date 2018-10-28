@@ -37,7 +37,9 @@
               <div>
                 <!-- 商品列表 -->
                 <ul class="js-list block block-list block-list-cart border-0">
-                  <li class="block-item block-item-cart" :class="{editing:shop.editing}" v-for="(good,goodIndex) in shop.goodsList">
+                  <li class="block-item block-item-cart" :class="{editing:shop.editing}" v-for="(good,goodIndex) in shop.goodsList"
+                  @touchstart="star($event,good)" @touchend="end($event,shopIndex,good,goodIndex)"
+                  :ref="'goods-'+shopIndex+'-'+goodIndex">
                     <div>
                       <div class="check-container" @click="selectGood(shop,good)">
                         <span class="check" :class="{checked:editingShop? good.removeChecked:good.checked}"></span>
@@ -141,9 +143,9 @@
     </div>
     <div id="hEQD1ZYb2p" v-show="removePopout" style="height:100%; position:fixed; top:0px; left:0px; right:0px; background-color: rgba(0,0,0,0.7); z-index:1000; transition:none 0.2s ease; opacity:1;"></div>
     <div id="RKinAL9BX5" v-show="removePopout" class="popout-confirm popout-box" style="overflow: hidden; position: absolute;z-index: 1000; transition:opacity 300ms ease; left: 50%; top:40%; transform: translate3d(-50%,-50%,0px); visibility: visible; border-radius: 4px; background: white; width: 270px; padding: 15px; opacity: 1;"> 
-      <div class="confirm-content font-size-14" style="line-height:20px; padding:5px 5px 10px;">确定要删除该商品吗？</div>
+      <div class="confirm-content font-size-14" style="line-height:20px; padding:5px 5px 10px;">{{removeMsg}}</div>
       <hr style="margin:9px -15px 10px;">
-      <div class="btn-2-1">
+      <div class="btn-2-1"@click="removePopout=false">
         <p class="js-cancel center font-size-16" style="padding: top 5px;">取消</p>
       </div>
       <div class="btn-2-1" @click="removeConfirm">
