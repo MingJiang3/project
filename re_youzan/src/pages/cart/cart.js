@@ -7,6 +7,8 @@ import mixin from 'js/mixin.js'
 import axios from 'axios'
 import url from 'js/api.js'
 import Velocity from 'velocity-animate'
+import Foot from 'components/Footer'
+
 
 new Vue({
     el: '.container',
@@ -220,5 +222,6 @@ new Vue({
             
         }
     },
+    components:{Foot},
     mixins: [mixin]
     })
