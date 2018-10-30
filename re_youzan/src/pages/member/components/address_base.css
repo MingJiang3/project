@@ -1126,9 +1126,9 @@ only screen and (min-device-pixel-ratio: 1.5) {
 .pc-promote-code .wx-info-block {
   margin: 10px 5px;
   padding-bottom: 10px;
-  -webkit-border-image: url("https://b.yzcdn.cn/v2/image/pf/ui/border-line.png") 2 stretch;
+  /* -webkit-border-image: url("https://b.yzcdn.cn/v2/image/pf/ui/border-line.png") 2 stretch;
   -moz-border-image: url("https://b.yzcdn.cn/v2/image/pf/ui/border-line.png") 2 stretch;
-  border-image: url("https://b.yzcdn.cn/v2/image/pf/ui/border-line.png") 2 stretch;
+  border-image: url("https://b.yzcdn.cn/v2/image/pf/ui/border-line.png") 2 stretch; */
   border-bottom: 2px solid #e5e5e5
 }
 
