@@ -2,13 +2,13 @@
   <div class="container" style="min-height: 597px;">
     <div class="block-list address-list section section-first js-no-webview-block" v-if="lists&&lists.length">
        <a class="block-item js-address-item address-item" v-for="list in lists" @click="toEdit(list)"
-      :class="{'address-item-default':list.isDefault}" :key="list.id">
+      :class="{'address-item-default':list.isDefault}">
         <div class="address-title">{{list.name}} {{list.tel}}</div>
         <p>{{list.provinceName}}{{list.cityName}}{{list.districtName}}{{list.address}}</p>
         <a class="address-edit">修改</a>
       </a>
     </div>
-    <div v-else>
+    <div v-if="lists&&!lists.length">
       目前没有地址，请添加~
     </div>
     <div class="block stick-bottom-row center">
@@ -26,7 +26,7 @@ export default {
   data() {
     return {
       lists: null
-    };
+    }
   },
   created() {
     Address.list().then(res => {
@@ -38,16 +38,17 @@ export default {
       // this.$router.push({ path: "/all/form" });  //编程式路由
       this.$router.push({ name: "form",query:{  //命名路由
         type:'edit',
-        instence:list
-      } });
+        instance:list
+        } 
+      });
 
     }
   }
 };
 </script>
 <style scoped>
-@import "./address.css";
-@import "./address_base.css";
+  @import "./address.css";
+  @import "./address_base.css";
 </style>
 
 

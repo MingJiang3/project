@@ -21,10 +21,11 @@ export default {
         this.type = query.type
         this.instance = query.instance
         if(this.type === 'edit'){
-            this.provinceValue = parseInt(this.instance.provinceValue)//相应省的编码
-            this.name = this.instance.name
-            this.tel = this.instance.tel
-            this.address = this.instance.address
+            let ad = this.instance
+            this.provinceValue = parseInt(ad.provinceValue)//相应省的编码
+            this.name = ad.name
+            this.tel = ad.tel
+            this.address = ad.address
             this.id = id
         }
     },
@@ -60,10 +61,11 @@ export default {
     watch: {
         provinceValue(val) {
             if (val === -1) return      //不选不做任何操作
-            let list = this.addressData.list
-            let index = list.findIndex(item=>{
+            let lists = this.addressData.list
+            let index = lists.findIndex(item =>{
                 return item.value = val
             })
+            console.log('111111')
             this.cityList = list[index].children
             this.cityValue = -1     //选择省份后还原市、区
             this.districtValue = -1

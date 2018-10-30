@@ -7,9 +7,16 @@ let router = new Router({
         path: '/',
         components: require('./components/member.vue')
     }, {
-        path: '/all',
-        components: require('./components/all.vue'),
-        children: [{    //嵌套路由
+        path: '/address',
+        components: require('./components/address.vue'),
+        children: [{        //嵌套路由
+            path: '',
+            redirect: 'all'
+        },{       
+            path: 'all',
+            name: 'all',
+            components: require('./components/all.vue')
+        },{    
             path: 'form',
             name: 'form',
             components: require('./components/form.vue')
@@ -22,3 +29,6 @@ new Vue({
     el: '#app',
     router
 })
+
+
+export default router

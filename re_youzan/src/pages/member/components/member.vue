@@ -6,7 +6,7 @@
           <div class="img" style="background-image: url(https://img.yzcdn.cn/upload_files/no_pic.png?imageView2/2/w/280/h/280/q/75/format/webp);"></div>
         </div>
         <div class="pull-left desc">
-          <p>tonyfree</p>
+          <p>MingJiang3</p>
         </div>
       </div>
       <div class="order-related">
@@ -71,7 +71,7 @@
           </a>
         </div>
         <div class="block block-list list-vertical">
-          <router-link class="block-item link clearfix ico-setting js-login" to="/all" target="_self">
+          <router-link class="block-item link clearfix ico-setting js-login" to="/address/all" target="_self">
             <p class="title-info c-black font-size-14">地址管理</p>
           </router-link>
           <a class="block-item link clearfix ico-help" href="http://bbs.youzan.com/home.php?mod=space&amp;do=thread&amp;view=me&amp;order=lastpost&amp;mobile=2&amp;fid=85&amp;filter=common&amp;in_app_type=weixin" target="_blank">
