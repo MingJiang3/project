@@ -61,11 +61,11 @@ export default {
     watch: {
         provinceValue(val) {
             if (val === -1) return      //不选不做任何操作
-            let lists = this.addressData.list
-            let index = lists.findIndex(item =>{
-                return item.value = val
+            let list = this.addressData.list
+            console.log(list)
+            let index = list.findIndex(item =>{
+                return item.value === val
             })
-            console.log('111111')
             this.cityList = list[index].children
             this.cityValue = -1     //选择省份后还原市、区
             this.districtValue = -1

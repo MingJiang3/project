@@ -16,7 +16,7 @@
           <div class="select-group">
             <select class="js-province-selector" v-model="provinceValue">
               <option value="-1">选择省份</option>
-              <option :value="p.value" v-for="p in addressData.children">{{p.label}}</option>
+              <option :value="p.value" v-for="p in addressData.list">{{p.label}}</option>
             </select>
             <select class="js-city-selector" v-model="cityValue">
               <option value="-1">选择城市</option>
