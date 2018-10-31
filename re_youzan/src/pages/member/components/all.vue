@@ -21,17 +21,14 @@
 </template>
 
 <script>
-import Address from "js/addressService.js";
 export default {
-  data() {
-    return {
-      lists: null
+  computed:{  //计算属性获取状态管理里的数据
+    lists(){
+      return this.$store.state.lists
     }
   },
   created() {
-    Address.list().then(res => {
-      this.lists = res.data.lists;
-    });
+    this.$store.dispatch('getLists')  //分发
   },
   methods: {
     toEdit(list) {
