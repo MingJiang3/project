@@ -252,7 +252,7 @@ only screen and (min-device-pixel-ratio: 1.5) {
   padding: 8px 5px;
   font-size: 14px;
   line-height: 1em;
-  background-color: #ff5050;
+  background: #ff5050;
   color: #fff;
   border: 1px solid transparent
 }

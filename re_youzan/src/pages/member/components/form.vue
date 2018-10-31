@@ -48,8 +48,8 @@
 </template>
 
 <style scoped>
-@import "./address.css";
 @import "./address_base.css";
+@import "./address.css";
 </style>
 
 <script src="./form.js"></script>

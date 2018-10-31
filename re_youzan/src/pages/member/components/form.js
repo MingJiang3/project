@@ -16,6 +16,11 @@ export default {
             districtList:null
         }
     },
+    computed: {
+      lists(){
+          return this.$store.state.lists
+      }  
+    },
     created() { 
         let query = this.$route.query
         this.type = query.type
@@ -26,7 +31,7 @@ export default {
             this.name = ad.name
             this.tel = ad.tel
             this.address = ad.address
-            this.id = id
+            this.id = ad.id
         }
     },
     methods:{
@@ -34,35 +39,44 @@ export default {
             let {name,tel,provinceValue,cityValue,districtValue,address} = this
             let data = {name,tel,provinceValue,cityValue,districtValue,address}
             if(this.type === 'add'){
-                Address.add(data).then(res=>{
-                    this.$router.go(-1) //返回上一页
-                })
+                // Address.add(data).then(res=>{
+                //     this.$router.go(-1) //返回上一页
+                // })
+                this.$store.dispatch('addAction',data)
             }
             if(this.type === 'edit'){
                 data.id = this.id
-                Address.update(data).then(res=>{
-                    this.$router.go(-1) //返回上一页
-                })
+                // Address.update(data).then(res=>{
+                //     this.$router.go(-1) //返回上一页
+                // })
+                this.$store.dispatch('updateAction',data)
             }
         },
         remove(){
             if(window.confirm('您确认删除吗？')){
-                Address.remove(this.id).then(res=>{
-                    this.$router.go(-1)
-                })
+                // Address.remove(this.id).then(res=>{
+                //     this.$router.go(-1)
+                // })
+                this.$store.dispatch('removeActions',this.id)
             }
         },
         setDefault(){
-            Address.setDefault(this.id).then(res=>{
-                this.$router.go(-1)
-            })
+            // Address.setDefault(this.id).then(res=>{
+            //     this.$router.go(-1)
+            // })
+            this.$store.dispatch('setDefaultAction',this.id)
         }
     },
     watch: {
+        lists:{
+            handler(){
+                this.$router.go(-1)
+            },
+            deep:true       //深度监听
+        },
         provinceValue(val) {
             if (val === -1) return      //不选不做任何操作
             let list = this.addressData.list
-            console.log(list)
             let index = list.findIndex(item =>{
                 return item.value === val
             })

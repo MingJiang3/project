@@ -28,7 +28,9 @@ export default {
     }
   },
   created() {
-    this.$store.dispatch('getLists')  //分发
+    if(!this.lists){
+      this.$store.dispatch('getLists')  //分发
+    }
   },
   methods: {
     toEdit(list) {
