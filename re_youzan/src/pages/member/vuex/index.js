@@ -22,7 +22,7 @@ const store = new Vuex.Store({  //Store要大写
             lists.splice(index,1)
         },
         update(state,instance){
-            let lists = JSON.parse(JSON.stringify(state.lists)) 
+            let lists = JSON.parse(JSON.stringify(state.lists)) //深复制处理，才能监听到
             let index = lists.findIndex(item=>{
                 return item.id == instance.id
             })
@@ -47,6 +47,8 @@ const store = new Vuex.Store({  //Store要大写
         },
         addAction({commit},instance){
             Address.add(instance).then(res=>{
+                //模拟添加id，最好instance是后台返回,因为模拟id为随机数，选择省市区地址不会显示
+                instance.id = parseInt(Math.random()*10000)
                 commit('add',instance)
             })
         },
