@@ -11,7 +11,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "bable-loader": "0.0.1-security",
     "element-ui": "^2.4.8",
     "less": "^3.8.1",
